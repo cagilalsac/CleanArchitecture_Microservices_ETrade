@@ -6,13 +6,11 @@ namespace Core.Responses.Bases
     {
         public bool IsSuccessful { get; }
         public string Message { get; }
-        public int Id { get; set; }
 
-        public Response(bool isSuccessful, string message, int id)
+        public Response(bool isSuccessful, string message, int id) : base(id)
         {
             IsSuccessful = isSuccessful;
             Message = message;
-            Id = id;
         }
 
         public Response()

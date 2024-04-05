@@ -28,7 +28,7 @@ namespace Customers.Application.Features.Customers
 
         public Task<IQueryable<ReadCustomerResponse>> Handle(ReadCustomerRequest request, CancellationToken cancellationToken)
 		{
-			_appMapper.AddProfiles(new CustomerProfile());
+			_appMapper.AddQueryProfiles(new CustomerQueryProfile());
             return Task.FromResult(_query.OrderBy(c => c.Name).ThenBy(c => c.Surname).ProjectTo<ReadCustomerResponse>(_appMapper.Configuration));
 		}
 	}

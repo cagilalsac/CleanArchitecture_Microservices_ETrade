@@ -12,10 +12,10 @@ namespace Customers.Application.Common.Mappers.Bases
 
         protected AppMapperBase(params Profile[] profiles)
         {
-            AddProfiles(profiles);
+            AddQueryProfiles(profiles);
         }
 
-        public virtual void AddProfiles(params Profile[] profiles)
+        public virtual void AddQueryProfiles(params Profile[] profiles)
         {
             Configuration = new MapperConfiguration(c =>
             {

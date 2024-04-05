@@ -4,9 +4,9 @@ using Customers.Domain.Entities;
 
 namespace Customers.Application.Mappers
 {
-	public class CustomerProfile : Profile
+	public class CustomerQueryProfile : Profile
 	{
-        public CustomerProfile()
+        public CustomerQueryProfile()
         {
             CreateMap<Customer, ReadCustomerResponse>()
                 .ForMember(c => c.FullName, o => o.MapFrom(s => s.Name + " " + s.Surname));
