@@ -10,7 +10,8 @@ namespace Products.Application.Common.Handlers.Bases
 	{
 		protected readonly AppMapperBase<TEntity, TResponse> _appMapper;
 
-		protected AppHandler(UnitOfWorkBase<TEntity> unitOfWork, AppMapperBase<TEntity, TResponse> appMapper) : base(unitOfWork)
+		protected AppHandler(UnitOfWorkBase unitOfWork, RepoBase<TEntity> repo, AppMapperBase<TEntity, TResponse> appMapper) 
+			: base(unitOfWork, repo)
 		{
 			_appMapper = appMapper;
 		}

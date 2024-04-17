@@ -31,7 +31,8 @@ namespace Products.Application.Features.Categories
 
     public class CreateCategoryHandler : AppHandler<Category, Response>, IRequestHandler<CreateCategoryRequest, Response>
     {
-        public CreateCategoryHandler(UnitOfWorkBase<Category> unitOfWork, AppMapperBase<Category, Response> appMapper) : base(unitOfWork, appMapper)
+        public CreateCategoryHandler(UnitOfWorkBase unitOfWork, RepoBase<Category> repo, AppMapperBase<Category, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

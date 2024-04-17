@@ -16,7 +16,8 @@ namespace Products.Application.Features.Products
     {
 		private readonly RepoBase<ProductStore> _productStoreRepo;
 
-		public DeleteProductHandler(UnitOfWorkBase<Product> unitOfWork, AppMapperBase<Product, Response> appMapper, RepoBase<ProductStore> productStoreRepo) : base(unitOfWork, appMapper)
+		public DeleteProductHandler(UnitOfWorkBase unitOfWork, RepoBase<Product> repo, AppMapperBase<Product, Response> appMapper, 
+			RepoBase<ProductStore> productStoreRepo) : base(unitOfWork, repo, appMapper)
 		{
 			_productStoreRepo = productStoreRepo;
 		}

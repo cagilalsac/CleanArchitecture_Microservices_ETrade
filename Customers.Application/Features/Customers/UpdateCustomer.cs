@@ -46,7 +46,8 @@ namespace Customers.Application.Features.Customers
 
     public class UpdateCustomerHandler : AppHandler<Customer, Response>, IRequestHandler<UpdateCustomerRequest, Response>
     {
-        public UpdateCustomerHandler(UnitOfWorkBase<Customer> unitOfWork, AppMapperBase<Customer, Response> appMapper) : base(unitOfWork, appMapper)
+        public UpdateCustomerHandler(UnitOfWorkBase unitOfWork, RepoBase<Customer> repo, AppMapperBase<Customer, Response> appMapper) 
+			: base(unitOfWork, repo, appMapper)
         {
         }
 

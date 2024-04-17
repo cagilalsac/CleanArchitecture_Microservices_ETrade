@@ -14,7 +14,8 @@ namespace Products.Application.Features.Categories
     
     public class DeleteCategoryHandler : AppHandler<Category, Response>, IRequestHandler<DeleteCategoryRequest, Response>
     {
-        public DeleteCategoryHandler(UnitOfWorkBase<Category> unitOfWork, AppMapperBase<Category, Response> appMapper) : base(unitOfWork, appMapper)
+        public DeleteCategoryHandler(UnitOfWorkBase unitOfWork, RepoBase<Category> repo, AppMapperBase<Category, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

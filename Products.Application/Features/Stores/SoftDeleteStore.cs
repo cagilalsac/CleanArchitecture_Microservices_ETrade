@@ -13,7 +13,8 @@ namespace Products.Application.Features.Stores
 
     public class SoftDeleteStoreHandler : AppHandler<Store, Response>, IRequestHandler<SoftDeleteStoreRequest, Response>
     {
-        public SoftDeleteStoreHandler(UnitOfWorkBase<Store> unitOfWork, AppMapperBase<Store, Response> appMapper) : base(unitOfWork, appMapper)
+        public SoftDeleteStoreHandler(UnitOfWorkBase unitOfWork, RepoBase<Store> repo, AppMapperBase<Store, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

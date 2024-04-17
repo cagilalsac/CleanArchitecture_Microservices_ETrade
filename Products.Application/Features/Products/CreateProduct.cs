@@ -38,7 +38,8 @@ namespace Products.Application.Features.Products
 
     public class CreateProductHandler : AppHandler<Product, Response>, IRequestHandler<CreateProductRequest, Response>
     {
-        public CreateProductHandler(UnitOfWorkBase<Product> unitOfWork, AppMapperBase<Product, Response> appMapper) : base(unitOfWork, appMapper)
+        public CreateProductHandler(UnitOfWorkBase unitOfWork, RepoBase<Product> repo, AppMapperBase<Product, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

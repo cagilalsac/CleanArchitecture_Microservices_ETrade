@@ -15,7 +15,7 @@ namespace Products.Application
     {
         public static void ConfigureApplication(this IServiceCollection services)
         {
-            services.AddScoped(typeof(UnitOfWorkBase<>), typeof(UnitOfWork<>));
+            services.AddScoped<UnitOfWorkBase, ProductUnitOfWork>();
             services.AddScoped(typeof(RepoBase<Category>), typeof(CategoryRepo));
             services.AddScoped(typeof(RepoBase<Product>), typeof(ProductRepo));
             services.AddScoped(typeof(RepoBase<Store>), typeof(StoreRepo));

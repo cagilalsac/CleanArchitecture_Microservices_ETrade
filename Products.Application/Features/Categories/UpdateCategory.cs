@@ -31,7 +31,8 @@ namespace Products.Application.Features.Categories
 
     public class UpdateCategoryHandler : AppHandler<Category, Response>, IRequestHandler<UpdateCategoryRequest, Response>
     {
-        public UpdateCategoryHandler(UnitOfWorkBase<Category> unitOfWork, AppMapperBase<Category, Response> appMapper) : base(unitOfWork, appMapper)
+        public UpdateCategoryHandler(UnitOfWorkBase unitOfWork, RepoBase<Category> repo, AppMapperBase<Category, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

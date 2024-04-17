@@ -5,14 +5,14 @@ namespace Core.Handlers.Bases
 {
     public abstract class Handler<TEntity> : IDisposable where TEntity : Entity, new()
 	{
-        protected readonly UnitOfWorkBase<TEntity> _unitOfWork;
+        protected readonly UnitOfWorkBase _unitOfWork;
         protected readonly RepoBase<TEntity> _repo;
 		protected IQueryable<TEntity> _query;
-        
-        protected Handler(UnitOfWorkBase<TEntity> unitOfWork)
+
+        protected Handler(UnitOfWorkBase unitOfWork, RepoBase<TEntity> repo)
         {
             _unitOfWork = unitOfWork;
-            _repo = _unitOfWork.Repo;
+            _repo = repo;
             _query = _repo.Query();
         }
 

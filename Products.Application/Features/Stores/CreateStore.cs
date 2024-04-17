@@ -31,7 +31,8 @@ namespace Products.Application.Features.Stores
 
     public class CreateStoreHandler : AppHandler<Store, Response>, IRequestHandler<CreateStoreRequest, Response>
     {
-        public CreateStoreHandler(UnitOfWorkBase<Store> unitOfWork, AppMapperBase<Store, Response> appMapper) : base(unitOfWork, appMapper)
+        public CreateStoreHandler(UnitOfWorkBase unitOfWork, RepoBase<Store> repo, AppMapperBase<Store, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

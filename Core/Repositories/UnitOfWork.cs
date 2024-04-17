@@ -1,11 +1,11 @@
-﻿using Core.Entities.Bases;
+﻿using Core.Contexts.Bases;
 using Core.Repositories.Bases;
 
 namespace Core.Repositories
 {
-    public class UnitOfWork<TEntity> : UnitOfWorkBase<TEntity> where TEntity : Entity, new()
+    public class UnitOfWork : UnitOfWorkBase
     {
-        public UnitOfWork(RepoBase<TEntity> repo) : base(repo)
+        public UnitOfWork(IDb db) : base(db)
         {
         }
     }

@@ -46,7 +46,8 @@ namespace Customers.Application.Features.Customers
 
 	public class CreateCustomerHandler : AppHandler<Customer, Response>, IRequestHandler<CreateCustomerRequest, Response>
 	{
-		public CreateCustomerHandler(UnitOfWorkBase<Customer> unitOfWork, AppMapperBase<Customer, Response> appMapper) : base(unitOfWork, appMapper)
+		public CreateCustomerHandler(UnitOfWorkBase unitOfWork, RepoBase<Customer> repo, AppMapperBase<Customer, Response> appMapper) 
+			: base(unitOfWork, repo, appMapper)
 		{
 		}
 

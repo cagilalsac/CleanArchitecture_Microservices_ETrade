@@ -20,7 +20,8 @@ namespace Products.Application.Features.Stores
 
     public class ReadStoreHandler : AppHandler<Store, ReadStoreResponse>, IRequestHandler<ReadStoreRequest, IQueryable<ReadStoreResponse>>
 	{
-        public ReadStoreHandler(UnitOfWorkBase<Store> unitOfWork, AppMapperBase<Store, ReadStoreResponse> appMapper) : base(unitOfWork, appMapper)
+        public ReadStoreHandler(UnitOfWorkBase unitOfWork, RepoBase<Store> repo, AppMapperBase<Store, ReadStoreResponse> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

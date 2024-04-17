@@ -21,7 +21,8 @@ namespace Products.Application.Features.Categories
 
     public class ReadCategoryHandler : AppHandler<Category, ReadCategoryResponse>, IRequestHandler<ReadCategoryRequest, IQueryable<ReadCategoryResponse>>
 	{
-        public ReadCategoryHandler(UnitOfWorkBase<Category> unitOfWork, AppMapperBase<Category, ReadCategoryResponse> appMapper) : base(unitOfWork, appMapper)
+        public ReadCategoryHandler(UnitOfWorkBase unitOfWork, RepoBase<Category> repo, AppMapperBase<Category, ReadCategoryResponse> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

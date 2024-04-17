@@ -22,7 +22,8 @@ namespace Customers.Application.Features.Customers
 
     public class ReadCustomerHandler : AppHandler<Customer, ReadCustomerResponse>, IRequestHandler<ReadCustomerRequest, IQueryable<ReadCustomerResponse>>
 	{
-        public ReadCustomerHandler(UnitOfWorkBase<Customer> unitOfWork, AppMapperBase<Customer, ReadCustomerResponse> appMapper) : base(unitOfWork, appMapper)
+        public ReadCustomerHandler(UnitOfWorkBase unitOfWork, RepoBase<Customer> repo, AppMapperBase<Customer, ReadCustomerResponse> appMapper) 
+			: base(unitOfWork, repo, appMapper)
         {
         }
 

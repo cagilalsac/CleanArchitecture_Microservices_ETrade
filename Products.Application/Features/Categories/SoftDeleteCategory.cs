@@ -13,7 +13,8 @@ namespace Products.Application.Features.Categories
 
     public class SoftDeleteCategoryHandler : AppHandler<Category, Response>, IRequestHandler<SoftDeleteCategoryRequest, Response>
     {
-        public SoftDeleteCategoryHandler(UnitOfWorkBase<Category> unitOfWork, AppMapperBase<Category, Response> appMapper) : base(unitOfWork, appMapper)
+        public SoftDeleteCategoryHandler(UnitOfWorkBase unitOfWork, RepoBase<Category> repo, AppMapperBase<Category, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

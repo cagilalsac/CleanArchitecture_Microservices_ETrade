@@ -34,7 +34,8 @@ namespace Products.Application.Features.Stores
     {
 		private readonly RepoBase<ProductStore> _productStoreRepo;
 
-		public UpdateStoreHandler(UnitOfWorkBase<Store> unitOfWork, AppMapperBase<Store, Response> appMapper, RepoBase<ProductStore> productStoreRepo) : base(unitOfWork, appMapper)
+		public UpdateStoreHandler(UnitOfWorkBase unitOfWork, RepoBase<Store> repo, AppMapperBase<Store, Response> appMapper, 
+            RepoBase<ProductStore> productStoreRepo) : base(unitOfWork, repo, appMapper)
 		{
 			_productStoreRepo = productStoreRepo;
 		}

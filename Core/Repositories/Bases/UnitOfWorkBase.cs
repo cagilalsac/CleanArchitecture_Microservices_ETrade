@@ -1,24 +1,24 @@
-﻿using Core.Entities.Bases;
+﻿using Core.Contexts.Bases;
 
 namespace Core.Repositories.Bases
 {
-    public abstract class UnitOfWorkBase<TEntity> : IDisposable where TEntity : Entity, new()
+    public abstract class UnitOfWorkBase : IDisposable
     {
-        public RepoBase<TEntity> Repo { get; }
+        protected readonly IDb _db;
 
-        protected UnitOfWorkBase(RepoBase<TEntity> repo)
+        protected UnitOfWorkBase(IDb db)
         {
-            Repo = repo;
+            _db = db;
         }
 
         public virtual async Task<int> SaveAsync(CancellationToken cancellationToken = default)
         {
-            return await Repo.Db.SaveChangesAsync(cancellationToken);
+            return await _db.SaveChangesAsync(cancellationToken);
         }
 
         public void Dispose()
         {
-            Repo.Dispose();
+            _db?.Dispose();
             GC.SuppressFinalize(this);
         }
     }

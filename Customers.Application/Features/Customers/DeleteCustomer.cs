@@ -13,7 +13,8 @@ namespace Customers.Application.Features.Customers
     
     public class DeleteCustomerHandler : AppHandler<Customer, Response>, IRequestHandler<DeleteCustomerRequest, Response>
     {
-        public DeleteCustomerHandler(UnitOfWorkBase<Customer> unitOfWork, AppMapperBase<Customer, Response> appMapper) : base(unitOfWork, appMapper)
+        public DeleteCustomerHandler(UnitOfWorkBase unitOfWork, RepoBase<Customer> repo, AppMapperBase<Customer, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

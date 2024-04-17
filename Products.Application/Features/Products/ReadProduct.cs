@@ -24,7 +24,8 @@ namespace Products.Application.Features.Products
 
     public class ReadProductHandler : AppHandler<Product, ReadProductResponse>, IRequestHandler<ReadProductRequest, IQueryable<ReadProductResponse>>
     {
-        public ReadProductHandler(UnitOfWorkBase<Product> unitOfWork, AppMapperBase<Product, ReadProductResponse> appMapper) : base(unitOfWork, appMapper)
+        public ReadProductHandler(UnitOfWorkBase unitOfWork, RepoBase<Product> repo, AppMapperBase<Product, ReadProductResponse> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

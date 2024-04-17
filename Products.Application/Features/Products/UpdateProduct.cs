@@ -38,7 +38,8 @@ namespace Products.Application.Features.Products
 
     public class UpdateProductHandler : AppHandler<Product, Response>, IRequestHandler<UpdateProductRequest, Response>
     {
-        public UpdateProductHandler(UnitOfWorkBase<Product> unitOfWork, AppMapperBase<Product, Response> appMapper) : base(unitOfWork, appMapper)
+        public UpdateProductHandler(UnitOfWorkBase unitOfWork, RepoBase<Product> repo, AppMapperBase<Product, Response> appMapper) 
+            : base(unitOfWork, repo, appMapper)
         {
         }
 

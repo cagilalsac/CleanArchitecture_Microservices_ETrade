@@ -4,36 +4,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Repositories.Bases
 {
-    public abstract class RepoBase<TEntity> : IDisposable where TEntity : Entity, new()
+    public abstract class RepoBase<TEntity> where TEntity : Entity, new()
 	{
-		internal IDb Db { get; }
+		protected readonly IDb _db;
 
 		protected RepoBase(IDb db)
 		{
-			Db = db;
+			_db = db;
 		}
 
 		public virtual IQueryable<TEntity> Query(bool isNoTracking = false) 
 		{
-			var query = Db.Set<TEntity>().Where(q => !q.IsDeleted);
+			var query = _db.Set<TEntity>().Where(q => !q.IsDeleted);
 			return isNoTracking ? query.AsNoTracking() : query;
 		}
 
 		public virtual void Create(TEntity entity)
 		{
-			Db.Set<TEntity>().Add(entity);
+			_db.Set<TEntity>().Add(entity);
 		}
 
 		public virtual void Update(TEntity entity)
 		{
-			Db.Set<TEntity>().Update(entity);
+			_db.Set<TEntity>().Update(entity);
 		}
 
 		public virtual void Delete(int id)
 		{
 			var entity = Query().SingleOrDefault(e => e.Id == id);
 			if (entity is not null)
-				Db.Set<TEntity>().Remove(entity);
+				_db.Set<TEntity>().Remove(entity);
 		}
 
 		public virtual void SoftDelete(int id)
@@ -44,12 +44,6 @@ namespace Core.Repositories.Bases
 				entity.IsDeleted = true;
 				Update(entity);
 			}
-		}
-
-		public void Dispose()
-		{
-			Db?.Dispose();
-			GC.SuppressFinalize(this);
 		}
 	}
 }
