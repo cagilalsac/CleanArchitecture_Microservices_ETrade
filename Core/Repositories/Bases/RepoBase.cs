@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.Repositories.Bases
 {
-    public abstract class RepoBase<TEntity> where TEntity : Entity, new()
+    public abstract class RepoBase<TEntity> : IDisposable where TEntity : Entity, new()
 	{
 		protected readonly IDb _db;
 
@@ -45,5 +45,11 @@ namespace Core.Repositories.Bases
 				Update(entity);
 			}
 		}
-	}
+
+        public void Dispose()
+        {
+			_db?.Dispose();
+			GC.SuppressFinalize(this);
+        }
+    }
 }

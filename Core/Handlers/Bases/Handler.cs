@@ -18,6 +18,7 @@ namespace Core.Handlers.Bases
 
         public void Dispose()
 		{
+            _repo.Dispose();
             _unitOfWork.Dispose();
             GC.SuppressFinalize(this);
 		}
